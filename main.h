@@ -2,6 +2,8 @@
 #define MAIN_H
 
 int _printf(const char *format, ...);
+int _putchar(char);
+int _puts(char *);
 
 typedef struct functions
 {
