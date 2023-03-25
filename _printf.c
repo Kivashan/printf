@@ -31,6 +31,11 @@ int _printf(const char *format, ...)
 						count += _putchar(ch);
 						i = i + 2;
 						break;
+					case 'C':
+                                                ch = va_arg(ap, int);
+                                                count += _putchar(ch);
+                                                i = i + 2;
+                                                break;
 					case 's':
 						s = va_arg(ap, char *);
 						if (!s)
@@ -38,6 +43,13 @@ int _printf(const char *format, ...)
 						count += _puts(s);
 						i = i + 2;
 						break;
+					/*case 'S':
+                                                s = va_arg(ap, char *);
+                                                if (!s)
+                                                        s = "(null)";
+                                                count += _puts(s);
+                                                i = i + 2;
+                                                break;*/
 					case '%':
 					/*	if (j == 1)
 						{*/
