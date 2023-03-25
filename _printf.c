@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
                                                 break;
 					case 's':
 						len = _strlen(va_arg(ap, char *));
-						s = malloc(sizeof(char) * (len));
+						s = malloc(sizeof(char) * (len + 1));
 						if (!s)
 							_puts("(null)"); 
 						_strcpy(s, va_arg(ap2, char *));
