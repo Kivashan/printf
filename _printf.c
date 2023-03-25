@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdlib.h>
 
 /**
  * _printf - printf formatted output
@@ -12,7 +13,6 @@ int _printf(const char *format, ...)
 {
 	va_list ap;
 	int i, count = 0;
-	char ch, *s;
 
 	va_start(ap, format);
 	i = 0;
@@ -29,20 +29,15 @@ int _printf(const char *format, ...)
 				switch (format[i + 1])
 				{
 					case 'c':
-						ch = va_arg(ap, int);
-						count += _putchar(ch);
+						count += _putchar(va_arg(ap, int));
 						i = i + 2;
 						break;
 					case 'C':
-                                                ch = va_arg(ap, int);
-                                                count += _putchar(ch);
+                                                count += _putchar(va_arg(ap, int));
                                                 i = i + 2;
                                                 break;
 					case 's':
-						s = va_arg(ap, char *);
-						if (!s)
-							s = "(null)";
-						count += _puts(s);
+						count += _puts(va_arg(ap, char *));
 						i = i + 2;
 						break;
 					/*case 'S':
