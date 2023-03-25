@@ -5,6 +5,7 @@ int _printf(const char *format, ...)
 {
 	va_list ap;
 	int flag, i, j, count = 0;
+	char ch;
 
 	va_start(ap, format);
 	i = 0;
@@ -15,11 +16,14 @@ int _printf(const char *format, ...)
 			j = 1;
 			flag = 0;
 			while (flag == 0)
-			{	
+			{
 				switch (format[i + j])
 				{
 					case 'c':
-						count += _putchar(va_arg(ap, int));
+						ch = va_arg(ap, int);
+						if (!ch)
+							return (-1);
+						count += _putchar(c);
 						flag = 1;
 						break;
 					case 's':
@@ -32,7 +36,7 @@ int _printf(const char *format, ...)
 			j++;
 			}
 			i = i + j;
-			continue;	
+			continue;
 		}
 		count += _putchar(format[i]);
 		i++;
