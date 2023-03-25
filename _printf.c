@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int flag, i, j, count = 0;
+	int i, count = 0;
 	char ch, *s;
 
 	va_start(ap, format);
@@ -20,39 +20,37 @@ int _printf(const char *format, ...)
 	{
 		while (format[i]  == '%')
 		{
-			j = 1;
+		/*	j = 1;
 			flag = 0;
 			while (flag == 0)
-			{
-				switch (format[i + j])
+			{*/
+				switch (format[i + 1])
 				{
 					case 'c':
 						ch = va_arg(ap, int);
-						if (!ch)
-							return (-1);
 						count += _putchar(ch);
-						flag = 1;
+						i = i + 2;
 						break;
 					case 's':
 						s = va_arg(ap, char *);
 						if (!s)
-							return (-1);
+							s = "(null)";
 						count += _puts(s);
-						flag = 1;
+						i = i + 2;
 						break;
 					case '%':
-						if (j == 1)
-						{
+					/*	if (j == 1)
+						{*/
 							_putchar('%');
-						}
-						flag = 1;
+					/*	}*/
+						i = i + 2;
 						break;
 					default:
 						break;
 				}
-			j++;
+		/*	j++;
 			}
-			i = i + j;
+			i = i + j;*/
 			continue;
 		}
 		count += _putchar(format[i]);
