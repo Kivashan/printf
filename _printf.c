@@ -12,14 +12,20 @@
 int _printf(const char *format, ...)
 {
 	va_list ap;
+	va_list ap2;
 	int i, count = 0;
+	int len;
+	char *s;
 
 	va_start(ap, format);
+	va_start(ap2, format);
+
 	i = 0;
 	if (!format)
 		return (-1);
 	while (format[i] != '\0')
 	{
+		len = 0;
 		while (format[i]  == '%')
 		{
 		/*	j = 1;
@@ -37,7 +43,13 @@ int _printf(const char *format, ...)
                                                 i = i + 2;
                                                 break;
 					case 's':
-						count += _puts(va_arg(ap, char *));
+						len = _strlen(va_arg(ap, char *));
+						s = malloc(sizeof(char) * (len));
+						if (!s)
+							_puts("(null)"); 
+						_strcpy(s, va_arg(ap2, char *));
+						count += _puts(s);
+						free(s);
 						i = i + 2;
 						break;
 					/*case 'S':

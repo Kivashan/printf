@@ -7,5 +7,6 @@ int _printf(const char *format, ...);
 int _putchar(char);
 int _puts(char *);
 int _strlen(char *);
+char *_strcpy(char *, char *);
 
 #endif
