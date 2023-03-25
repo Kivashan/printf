@@ -1,11 +1,18 @@
 #include "main.h"
 #include <stdarg.h>
 
+/**
+ * _printf - printf formatted output
+ * @format: format string
+ *
+ * Return: number of characters printed
+ */
+
 int _printf(const char *format, ...)
 {
 	va_list ap;
 	int flag, i, j, count = 0;
-	char ch;
+	char ch, *s;
 
 	va_start(ap, format);
 	i = 0;
@@ -23,11 +30,21 @@ int _printf(const char *format, ...)
 						ch = va_arg(ap, int);
 						if (!ch)
 							return (-1);
-						count += _putchar(c);
+						count += _putchar(ch);
 						flag = 1;
 						break;
 					case 's':
-						count += _puts(va_arg(ap, char *));
+						s = va_arg(ap, char *);
+						if (!s)
+							return (-1);
+						count += _puts(s);
+						flag = 1;
+						break;
+					case '%':
+						if (j == 1)
+						{
+							_putchar('%');
+						}
 						flag = 1;
 						break;
 					default:
