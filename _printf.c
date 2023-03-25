@@ -46,8 +46,16 @@ int _printf(const char *format, ...)
 						i = i + 2;
 						break;
 					default:
+						if (format[i + 1] == 't')
+						{
 						count += _putchar('%');
 						i = i + 2;
+						}
+						else
+						{
+							count += _putchar('%');
+							i = i + 1;
+						}
 						break;
 				}
 		/*	j++;
