@@ -60,7 +60,7 @@ int _printf(const char *format, ...)
 						i = i + 2;
 						break;
 					default:
-						if (format[i + 1] == 't')
+						if (format[i + 1] == 't' || format[i + 1] == 'j')
 						{
 						count += _putchar('%');
 						i = i + 2;
