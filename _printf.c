@@ -41,11 +41,13 @@ int _printf(const char *format, ...)
 					case '%':
 					/*	if (j == 1)
 						{*/
-							_putchar('%');
+							count += _putchar('%');
 					/*	}*/
 						i = i + 2;
 						break;
 					default:
+						count += _putchar('%');
+						i = i + 2;
 						break;
 				}
 		/*	j++;
