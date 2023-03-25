@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * _printf - printf formatted output
@@ -16,6 +17,7 @@ int _printf(const char *format, ...)
 	int i, count = 0;
 	int len;
 	char *s;
+	char *tmp;
 
 	va_start(ap, format);
 	va_start(ap2, format);
@@ -28,10 +30,6 @@ int _printf(const char *format, ...)
 		len = 0;
 		while (format[i]  == '%')
 		{
-		/*	j = 1;
-			flag = 0;
-			while (flag == 0)
-			{*/
 				switch (format[i + 1])
 				{
 					case 'c':
@@ -43,27 +41,29 @@ int _printf(const char *format, ...)
                                                 i = i + 2;
                                                 break;
 					case 's':
-						len = _strlen(va_arg(ap, char *));
+						tmp = va_arg(ap, char *);
+						if (!tmp)
+						{
+							count += _puts("(null)");
+							i = i + 2;
+							break;
+						}
+						len = _strlen(tmp);
+						
 						s = malloc(sizeof(char) * (len + 1));
 						if (!s)
-							_puts("(null)"); 
-						_strcpy(s, va_arg(ap2, char *));
+						{
+							count += _puts("(null)");
+							i = i + 2;
+							break;
+						}
+						s = _strcpy(s, va_arg(ap2, char *));
 						count += _puts(s);
 						free(s);
 						i = i + 2;
 						break;
-					/*case 'S':
-                                                s = va_arg(ap, char *);
-                                                if (!s)
-                                                        s = "(null)";
-                                                count += _puts(s);
-                                                i = i + 2;
-                                                break;*/
 					case '%':
-					/*	if (j == 1)
-						{*/
-							count += _putchar('%');
-					/*	}*/
+						count += _putchar('%');
 						i = i + 2;
 						break;
 					default:
@@ -71,14 +71,12 @@ int _printf(const char *format, ...)
 							i = i + 1;
 						break;
 				}
-		/*	j++;
-			}
-			i = i + j;*/
 			continue;
 		}
 		count += _putchar(format[i]);
 		i++;
 	}
 	va_end(ap);
+	va_end(ap2);
 	return (count);
 }
