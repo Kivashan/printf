@@ -9,7 +9,7 @@
  * Return: Void
  */
 
-void copy_string(va_list list, char *buffer, size_t *buff_pos)
+void copy_string(va_list list, char *buffer, unsigned long int *buff_pos)
 {
 	char *str = va_arg(list, char *);
 	int i;

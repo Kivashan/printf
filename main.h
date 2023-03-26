@@ -8,14 +8,14 @@
 
 typedef struct printer {
 	char *spec;
-	 void (*case_func)(va_list, char *, size_t *);
+	 void (*case_func)(va_list, char *, unsigned long int *);
 }get;
 
 int _printf(const char *format, ...);
-void copy_char(va_list, char *, size_t *);
-void copy_string(va_list, char *, size_t *);
-void print_buffer(char *, size_t);
-int print_percent(const char *, int *, char *, size_t *);
+void copy_char(va_list, char *, unsigned long int *);
+void copy_string(va_list, char *,unsigned long int *);
+void print_buffer(char *, unsigned long int *);
+int print_percent(const char *, int *, char *, unsigned long int *);
 
 /*int _strlen(char *);
 char *_strcpy(char *, char *);

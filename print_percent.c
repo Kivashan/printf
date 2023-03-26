@@ -10,7 +10,7 @@
  * Return: 1 if %%, 0 otherwise
  */
 
-int print_percent(char *format, int *i, char *buffer, size_t *buff_pos)
+int print_percent(const char *format, int *i, char *buffer, unsigned long int *buff_pos)
 {
 	if (format[*i + 1] == '%')
 	{
