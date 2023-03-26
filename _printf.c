@@ -4,10 +4,10 @@
 int _printf(const char * format,...)
 {
 	char *buffer;
-	int i, j, 
+	int i, j; 
 	unsigned long int buff_pos = 0;
 	va_list ap;
-	get print[] = {{"c", copy_char},{"s", copy_string},{"\0", "\0"}};
+	get print[] = {{"c", copy_char},{"s", copy_string},{NULL, NULL}};
 
 	va_start(ap, format);
 	if (!format)
@@ -22,9 +22,9 @@ int _printf(const char * format,...)
 			if (print_percent(format, &i, buffer, &buff_pos))/*append % to buffer and increment i by 2*/
 				continue;/*is it necessary?*/
 			j = 0;
-			while (print[j].spec != "\0")
+			while (print[j].spec != NULL)
 			{
-				if (print[j].spec == format[i])
+				if (print[j].spec[0] == format[i])
 				{
 					(*print[j].case_func)(ap, buffer, &buff_pos);
 					i = i + 2;
@@ -35,6 +35,7 @@ int _printf(const char * format,...)
 		buffer[buff_pos] = format[i];
 		buff_pos++;
 	}
+	print_buffer(buffer, &buff_pos);
 	va_end(ap);
 	return (buff_pos);
 }
