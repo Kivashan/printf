@@ -5,14 +5,14 @@ int _printf(const char * format,...)
 	int i, j, flag = 0, count = 0; 
 	unsigned long int buff_pos = 0;
 	va_list ap;
-	get print[] = {{"c", copy_char},{"s", copy_string},{NULL, NULL}};
+	get print[] = {{"c", copy_char},{"s", copy_string},{((void *)0), ((void *)0)}};
 
 	va_start(ap, format);
 	if (!format)
 		return (-1);
 	buffer = malloc(1024);
 	if (!buffer)
-		return (0);
+		return (-1);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
@@ -20,7 +20,7 @@ int _printf(const char * format,...)
 			if (print_percent(format, &i, buffer, &buff_pos))
 				continue;
 			j = 0;
-			while (print[j].spec != NULL)
+			while (print[j].spec != ((void *)0))
 			{
 				if (print[j].spec[0] == format[i + 1])
 				{
