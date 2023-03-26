@@ -5,9 +5,10 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-typedef struct printer [] = {
-	{char spec, void (*case_func)(va_list, char *, int *)}
-} print;
+typedef struct printer {
+	char spec;
+	 void (*case_func)(va_list, char *, int *);
+}get;
 
 int _printf(const char *format, ...);
 void copy_char(va_list, char *, int *);

@@ -4,9 +4,9 @@
 int _printf(const char * format,...)
 {
 	char *buffer;
-	int i, buff_pos = 0;
+	int i, j, buff_pos = 0;
 	va_list ap;
-	print[] = {{"c", copy_char},{"s", copy_string},{NULL, NULL}};
+	get print[] = {{"c", copy_char},{"s", copy_string},{NULL, NULL}};
 
 	va_start(ap, format);
 	if (!format)
@@ -32,7 +32,7 @@ int _printf(const char * format,...)
 			} continue;
 		}
 		buffer[buff_pos] = format[i];
-		buf_pos++;
+		buff_pos++;
 	}
 	va_end(ap);
 	return (buff_pos);
