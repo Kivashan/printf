@@ -12,7 +12,7 @@ int _printf(const char * format,...)
 		return (-1);
 	buffer = malloc(1024);
 	if (!buffer)
-		return (-1);
+		return (0);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
@@ -27,23 +27,24 @@ int _printf(const char * format,...)
 					count += (*print[j].case_func)(ap, buffer, &buff_pos);
 					i = i + 1;
 					flag = 1;
+					break;
 				}
 				j++;
 			}
 			if (flag == 0)
 			{
-				check_buffer(buffer, &buff_pos);
 				buffer[buff_pos] = format[i];
 				buff_pos++;
+				check_buffer(buffer, &buff_pos);
 				count++;
 			}
 			continue;
 		}
 		if (format[i] == '%' && format[i + 1] == '\0')
 			return (-1);
-		check_buffer(buffer, &buff_pos);
 		buffer[buff_pos] = format[i];
 		buff_pos++;
+		check_buffer(buffer, &buff_pos);
 		count++;
 	}
 	print_buffer(buffer, &buff_pos);
