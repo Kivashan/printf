@@ -22,6 +22,13 @@ int _printf(const char *format, ...)
 	{
 		while (format[i]  == '%')
 		{
+			if (format[i + 1] == '%')
+			{
+			      count += _putchar('%');
+                              i = i + 2;
+                              break;
+			}
+
 		/*	j = 1;
 			flag = 0;
 			while (flag == 0)
@@ -52,25 +59,17 @@ int _printf(const char *format, ...)
                                                 count += _puts(s);
                                                 i = i + 2;
                                                 break;*/
-					case '%':
-					/*	if (j == 1)
-						{*/
+				/*	case '%':
+						if (j == 1)
+					
 							count += _putchar('%');
-					/*	}*/
+					
 						i = i + 2;
-						break;
+						break;*/
 					default:
-						if (format[i + 1] == 't' || format[i + 1] == 'j')
-						{
-						count += _putchar('%');
-						i = i + 2;
-						}
-						else
-						{
-							count += _putchar('%');
-							i = i + 1;
-						}
-						break;
+							/*count += _putchar('%');
+							i = i + 1;*/
+							break;
 				}
 		/*	j++;
 			}
