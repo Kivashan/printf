@@ -5,7 +5,7 @@ int _printf(const char * format,...)
 	int i, j, flag = 0, count = 0; 
 	unsigned long int buff_pos = 0;
 	va_list ap;
-	get print[] = {{"c", copy_char},{"s", copy_string},{((void *)0), ((void *)0)}};
+	get print[] = {{"c", copy_char},{"s", copy_string},{NULL, NULL}};
 
 	va_start(ap, format);
 	if (!format)
@@ -20,7 +20,7 @@ int _printf(const char * format,...)
 			if (print_percent(format, &i, buffer, &buff_pos))
 				continue;
 			j = 0;
-			while (print[j].spec != ((void *)0))
+			while (print[j].spec != NULL)
 			{
 				if (print[j].spec[0] == format[i + 1])
 				{
