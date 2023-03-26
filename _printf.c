@@ -24,7 +24,7 @@ int _printf(const char * format,...)
 			{
 				if (print[j].spec[0] == format[i + 1])
 				{
-					(*print[j].case_func)(ap, buffer, &buff_pos);
+					count += (*print[j].case_func)(ap, buffer, &buff_pos);
 					i = i + 1;
 					flag = 1;
 				}
@@ -48,5 +48,5 @@ int _printf(const char * format,...)
 	}
 	print_buffer(buffer, &buff_pos);
 	va_end(ap);
-	return (buff_pos);
+	return (count);
 }

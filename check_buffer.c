@@ -15,7 +15,6 @@ void check_buffer(char *buffer, unsigned long int *buff_pos)
 	if (*buff_pos == BUFFSIZE)
         {
                 print_buffer(buffer, buff_pos);
-                free(buffer);
                 *buff_pos = 0;
         }
 }
