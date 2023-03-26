@@ -16,7 +16,7 @@ int print_percent(const char *format, int *i, char *buffer, unsigned long int *b
 	{
 		buffer[*buff_pos] = format[*i + 1];
 		*buff_pos = *buff_pos + 1;
-		*i = *i + 2;
+		*i = *i + 1;
 		return (1);
 	}
 	return (0);

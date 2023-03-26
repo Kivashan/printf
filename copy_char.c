@@ -11,7 +11,9 @@
 
 void copy_char(va_list list, char *buffer, unsigned long int *buff_pos)
 {
-	char ch = va_arg(list, int);
+	char ch;
+	
+	ch = va_arg(list, int);
 
 	buffer[*buff_pos] = ch;
 	*buff_pos = *buff_pos + 1;

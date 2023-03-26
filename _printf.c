@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdarg.h>
 #include "main.h"
 int _printf(const char * format,...)
 {
@@ -19,15 +17,20 @@ int _printf(const char * format,...)
 	{
 		if (format[i] == '%')
 		{
-			if (print_percent(format, &i, buffer, &buff_pos))/*append % to buffer and increment i by 2*/
-				continue;/*is it necessary?*/
+			if (print_percent(format, &i, buffer, &buff_pos))
+				continue;
 			j = 0;
 			while (print[j].spec != NULL)
 			{
-				if (print[j].spec[0] == format[i])
+				if (print[j].spec[0] == format[i + 1])
 				{
 					(*print[j].case_func)(ap, buffer, &buff_pos);
-					i = i + 2;
+					i = i + 1;
+				}
+				else
+				{
+					buffer[buff_pos] = format[i];
+					buff_pos++;
 				}
 				j++;
 			} continue;
