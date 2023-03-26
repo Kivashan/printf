@@ -2,7 +2,7 @@
 int _printf(const char * format,...)
 {
 	char *buffer;
-	int i, j, flag = 0; 
+	int i, j, flag = 0, count = 0; 
 	unsigned long int buff_pos = 0;
 	va_list ap;
 	get print[] = {{"c", copy_char},{"s", copy_string},{NULL, NULL}};
@@ -32,15 +32,19 @@ int _printf(const char * format,...)
 			}
 			if (flag == 0)
 			{
+				check_buffer(buffer, &buff_pos);
 				buffer[buff_pos] = format[i];
 				buff_pos++;
+				count++;
 			}
 			continue;
 		}
 		if (format[i] == '%' && format[i + 1] == '\0')
 			return (-1);
+		check_buffer(buffer, &buff_pos);
 		buffer[buff_pos] = format[i];
 		buff_pos++;
+		count++;
 	}
 	print_buffer(buffer, &buff_pos);
 	va_end(ap);

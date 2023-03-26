@@ -12,6 +12,8 @@
 
 int print_percent(const char *format, int *i, char *buffer, unsigned long int *buff_pos)
 {
+	check_buffer(buffer, buff_pos);
+
 	if (format[*i + 1] == '%')
 	{
 		buffer[*buff_pos] = format[*i + 1];

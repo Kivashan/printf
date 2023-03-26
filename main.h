@@ -16,7 +16,7 @@ int copy_char(va_list, char *, unsigned long int *);
 int copy_string(va_list, char *,unsigned long int *);
 void print_buffer(char *, unsigned long int *);
 int print_percent(const char *, int *, char *, unsigned long int *);
-void check_buffer(char *, int *);
+void check_buffer(char *, unsigned long int *);
 /*int _strlen(char *);
 char *_strcpy(char *, char *);
 int check_end_case(int, const char *);*/

@@ -9,12 +9,15 @@
  * Return: Void
  */
 
-void copy_char(va_list list, char *buffer, unsigned long int *buff_pos)
+int copy_char(va_list list, char *buffer, unsigned long int *buff_pos)
 {
 	char ch;
-	
+
 	ch = va_arg(list, int);
+	
+	check_buffer(buffer, buff_pos);
 
 	buffer[*buff_pos] = ch;
 	*buff_pos = *buff_pos + 1;
+	return (1);
 }
