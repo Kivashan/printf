@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	va_list ap;
 	int i, count = 0;
 	char ch, *s;
-	int flag = 1;
+/*	int flag = 1;*/
 
 	va_start(ap, format);
 	i = 0;
@@ -23,9 +23,9 @@ int _printf(const char *format, ...)
 	{
 		while (format[i]  == '%' && format[i + 1] != '\0')
 		{
-			flag = check_end_case(i, format);
+			/*flag = check_end_case(i, format);
 			if (flag == 0)
-				break;
+				break;*/
 
 			if (format[i + 1] == '%')
 			{
@@ -54,20 +54,6 @@ int _printf(const char *format, ...)
 						count += _puts(s);
 						i = i + 2;
 						break;
-					/*case 'S':
-                                                s = va_arg(ap, char *);
-                                                if (!s)
-                                                        s = "(null)";
-                                                count += _puts(s);
-                                                i = i + 2;
-                                                break;*/
-				/*	case '%':
-						if (j == 1)
-					
-							count += _putchar('%');
-					
-						i = i + 2;
-						break;*/
 					default:
 							count += _putchar('%');
 							i = i + 1;
@@ -76,7 +62,7 @@ int _printf(const char *format, ...)
 					
 			continue;
 		}
-		if ((format[i] == '%' && format[i + 1] == '\0') || flag == 0)
+		if ((format[i] == '%' && format[i + 1] == '\0')) /*|| flag == 0)*/
 			return (-1);
 		count += _putchar(format[i]);
 		i++;
