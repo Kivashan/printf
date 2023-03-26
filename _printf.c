@@ -2,7 +2,7 @@
 int _printf(const char * format,...)
 {
 	char *buffer;
-	int i, j; 
+	int i, j, flag = 0; 
 	unsigned long int buff_pos = 0;
 	va_list ap;
 	get print[] = {{"c", copy_char},{"s", copy_string},{NULL, NULL}};
@@ -26,14 +26,16 @@ int _printf(const char * format,...)
 				{
 					(*print[j].case_func)(ap, buffer, &buff_pos);
 					i = i + 1;
-				}
-				else
-				{
-					buffer[buff_pos] = format[i];
-					buff_pos++;
+					flag = 1;
 				}
 				j++;
-			} continue;
+			}
+			if (flag == 0)
+			{
+				buffer[buff_pos] = format[i];
+				buff_pos++;
+			}
+			continue;
 		}
 		buffer[buff_pos] = format[i];
 		buff_pos++;
