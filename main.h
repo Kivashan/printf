@@ -7,7 +7,7 @@
 #include <stddef.h>
 
 typedef struct printer {
-	char spec;
+	char *spec;
 	 void (*case_func)(va_list, char *, size_t *);
 }get;
 
