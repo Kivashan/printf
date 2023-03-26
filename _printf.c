@@ -2,7 +2,7 @@
 int _printf(const char * format,...)
 {
 	char *buffer;
-	int i, j, flag = 0, count = 0; 
+	int i, j, flag = 0, k, count = 0; 
 	unsigned long int buff_pos = 0;
 	va_list ap;
 	get print[] = {{"c", copy_char},{"s", copy_string},{NULL, NULL}};
@@ -12,8 +12,8 @@ int _printf(const char * format,...)
 		return (-1);
 	buffer = malloc(1024);
 	if (!buffer)
-		return (0);
-	for (i = 0; format[i] != '\0'; i++)
+		return (-1);
+	for (i = 0; format && format[i] != '\0'; i++)
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
@@ -24,7 +24,10 @@ int _printf(const char * format,...)
 			{
 				if (print[j].spec[0] == format[i + 1])
 				{
-					count += (*print[j].case_func)(ap, buffer, &buff_pos);
+					k = (*print[j].case_func)(ap, buffer, &buff_pos);
+					if (k == -1)
+						return (-1);
+					count += k;
 					i = i + 1;
 					flag = 1;
 					break;

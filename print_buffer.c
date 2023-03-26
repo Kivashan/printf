@@ -10,6 +10,7 @@
 
 void print_buffer(char *buffer, unsigned long int *buff_pos)
 {
+	if (*buff_pos > 0)
 	write(1, buffer, *buff_pos);
 
 	free(buffer);
