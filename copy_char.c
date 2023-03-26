@@ -9,9 +9,10 @@
  * Return: Void
  */
 
-void copy_char(va_list list, char *buffer, int *buff_pos)
+void copy_char(va_list list, char *buffer, size_t *buff_pos)
 {
 	char ch = va_arg(list, int);
 
-	buffer[buff_pos++] = ch;
+	buffer[*buff_pos] = ch;
+	*buff_pos = *buff_pos + 1;
 }

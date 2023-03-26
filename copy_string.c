@@ -9,7 +9,7 @@
  * Return: Void
  */
 
-void copy_string(va_list list, char *buffer, int *buff_pos)
+void copy_string(va_list list, char *buffer, size_t *buff_pos)
 {
 	char *str = va_arg(list, char *);
 	int i;
@@ -19,15 +19,15 @@ void copy_string(va_list list, char *buffer, int *buff_pos)
 		char *fail = "(null)";
 		for (i = 0; fail[i]; i++)
 		{
-			buffer[buff_pos] = fail[i];
-			buff_pos++;
+			buffer[*buff_pos] = fail[i];
+			*buff_pos = *buff_pos + 1;
 		}
 	}
 	else
 	{	for (i = 0; str[i]; i++)
 		{
-			buffer[buff_pos] = str[i];
-			buff_pos++;
+			buffer[*buff_pos] = str[i];
+			*buff_pos = *buff_pos + 1;
 		}
 	}
 }

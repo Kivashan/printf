@@ -8,9 +8,9 @@
  * Return: The number of characters printed
  */
 
-void print_buffer(char *buffer, int *buff_pos)
+void print_buffer(char *buffer, size_t *buff_pos)
 {
-	write(1, &buffer, buff_pos);
+	write(1, &buffer, *buff_pos);
 
 	free(buffer);
 }

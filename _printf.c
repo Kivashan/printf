@@ -4,7 +4,8 @@
 int _printf(const char * format,...)
 {
 	char *buffer;
-	int i, j, buff_pos = 0;
+	int i, j, 
+	size_t buff_pos = 0;
 	va_list ap;
 	get print[] = {{"c", copy_char},{"s", copy_string},{NULL, NULL}};
 
