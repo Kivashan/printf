@@ -11,7 +11,7 @@
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int i, count = 0;
+	int i, j, flag, count = 0;
 	char ch, *s;
 
 	va_start(ap, format);
@@ -29,28 +29,28 @@ int _printf(const char *format, ...)
                               break;
 			}
 
-		/*	j = 1;
+			j = 1;
 			flag = 0;
-			while (flag == 0)
-			{*/
-				switch (format[i + 1])
+			while (flag == 0 && format[i + j] != '\0')
+			{
+				switch (format[i + j])
 				{
 					case 'c':
 						ch = va_arg(ap, int);
 						count += _putchar(ch);
-						i = i + 2;
+						flag = 1;
 						break;
-					case 'C':
+					/*case 'C':
                                                 ch = va_arg(ap, int);
                                                 count += _putchar(ch);
                                                 i = i + 2;
-                                                break;
+                                                break;*/
 					case 's':
 						s = va_arg(ap, char *);
 						if (!s)
 							s = "(null)";
 						count += _puts(s);
-						i = i + 2;
+						flag = 1;
 						break;
 					/*case 'S':
                                                 s = va_arg(ap, char *);
@@ -71,9 +71,9 @@ int _printf(const char *format, ...)
 							i = i + 1;*/
 							break;
 				}
-		/*	j++;
+			j++;
 			}
-			i = i + j;*/
+			i = i + j;
 			continue;
 		}
 		count += _putchar(format[i]);
