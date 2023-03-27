@@ -3,10 +3,11 @@
 /**
  * get_specifier - Checks format string after encountering a % for a conversion
  *  specifier, if a conversion specifier is found, copies arguments to buffer
- * @format: format string
+ * @ap: va_list
+ * @fmt: format string
  * @i: position of % in format string
  * @buffer: string to copy to
- * @buff_pos: positino of first empty element in buffer
+ * @bp: positino of first empty element in buffer
  *
  * Return: the number of characters copied to buffer
  */
