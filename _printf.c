@@ -44,7 +44,6 @@ int _printf(const char * format,...)
 		}
 		if (format[i] == '%' && format[i + 1] == '\0')
 		{
-			print_buffer(buffer, &buff_pos);
 			return (0);
 		}
 		check_buffer(buffer, &buff_pos);
