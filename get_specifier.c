@@ -11,23 +11,23 @@
  * Return: the number of characters copied to buffer
  */
 
-int get_specifier(const char *format, int *i, char *buffer, int *buff_pos)
+int get_specifier(va_list ap, const char *fmt, int *i, char *buffer, unsigned long int *bp)
 {
 	int j, flag = 0, count = 0;
 	get print[] = {{"c", copy_char}, {"s", copy_string}, {NULL, NULL}};
 
-	if (print_percent(format, i, buffer, buff_pos))
+	if (print_percent(fmt, i, buffer, bp))
 	{
 		count++;
-		continue;
+		flag = 1; /* look at later */
 	}
 
 	j = 0;
 	while (print[j].spec != NULL)
 	{
-		if (print[j].spec[0] == format[*i + 1])
+		if (print[j].spec[0] == fmt[*i + 1])
 		{
-			count += (*print[j].case_func)(ap, buffer, buff_pos);
+			count += (*print[j].case_func)(ap, buffer, bp);
 			*i = *i + 1;
 			flag = 1;
 			break;
@@ -36,9 +36,9 @@ int get_specifier(const char *format, int *i, char *buffer, int *buff_pos)
 	}
 	if (flag == 0)
 	{
-		check_buffer(buffer, buff_pos);
-		buffer[*buff_pos] = format[*i];
-		*buff_pos = *buff_pos + 1;
+		check_buffer(buffer, bp);
+		buffer[*bp] = fmt[*i];
+		*bp = *bp + 1;
 		count++;
 	}
 	return (count);

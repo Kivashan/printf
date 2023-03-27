@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
-			count += get_specifier(format, i, buffer, &buff_pos);
+			count += get_specifier(ap, format, &i, buffer, &buff_pos);
 			continue;
 		}
 		if (format[i] == '%' && format[i + 1] == '\0')
