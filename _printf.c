@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	va_start(ap, format);
 	if (!format)
 		return (-1);
-	buffer = malloc(1024);
+	buffer = malloc(1023);
 	if (!buffer)
 		return (0);
 	for (i = 0; format[i] != '\0'; i++)
