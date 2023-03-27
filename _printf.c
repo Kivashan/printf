@@ -12,7 +12,7 @@ int _printf(const char * format,...)
 		return (-1);
 	buffer = malloc(1024);
 	if (!buffer)
-		return (-1);
+		return (0);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
