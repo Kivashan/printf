@@ -12,12 +12,19 @@
 int  copy_binary(va_list ap, char *buffer, unsigned long int *bp)
 {
 	/*char *str;*/
-	unsigned long int k, j = va_arg(ap, int);
+	unsigned int k, j = va_arg(ap, int);
 	int i;
 	int len2, len = 0;
        	char *str;
 
 	k = j;
+	if (j == 0)
+	{
+		buffer[*bp] = '0';
+		*bp = *bp + 1;
+		check_buffer(buffer, bp);
+		return (1);
+	}
 	/* calculate length for str */
 	for ( ; k != 0; k /= 2)
 		len++;
