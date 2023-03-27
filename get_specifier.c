@@ -18,7 +18,7 @@ int get_specifier(va_list ap, const char *fmt,
 	int j, flag = 0, count = 0;
 	get print[] = {
 		{"c", copy_char},
-	       	{"s", copy_string},
+		{"s", copy_string},
 		{"d", copy_int},
 		{"i", copy_int},
 		{"b", copy_binary},
