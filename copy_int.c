@@ -8,7 +8,7 @@
  * Return: Void
  */
 
-void _put_number(unsigned int i, int *count)
+void _put_number(unsigned int i, char *buffer, unsigned long int *bp, int *count)
 {
 	int j;
 
@@ -16,10 +16,11 @@ void _put_number(unsigned int i, int *count)
 	if (i > 9)
 	{
 		i = i / 10;
-		_put_number(i, count);
+		_put_number(i, buffer, bp, count);
 	}
+	buffer[*bp] = (j + 48);
+	*bp = *bp + 1;
 	*count = *count + 1;
-	_putchar(j + 48);
 }
 
 /**
@@ -29,20 +30,23 @@ void _put_number(unsigned int i, int *count)
  * Return: total number of characters printed
  */
 
-int _putint(int i)
+int copy_int(va_list ap, char *buffer, unsigned long int *bp)
 {
 	int count = 0;
+	int i = va_arg(ap,int);
 
 	/* prints minus sign if i < 0 */
 	if (i < 0)
 	{
-		_putchar('-');
+		buffer[*bp] = '-';
+		*bp = *bp + 1;
 		count++;
+
 		i = _abs(i);
 	}
 	
 	/* calls recursive function to print i */
-	_put_number(i, &count);
+	_put_number(i, buffer, bp, &count);
 
 	return (count);
 }

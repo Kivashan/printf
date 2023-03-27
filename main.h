@@ -27,5 +27,7 @@ void print_buffer(char *, unsigned long int *);
 int print_percent(const char *, int *, char *, unsigned long int *);
 void check_buffer(char *, unsigned long int *);
 int get_specifier(va_list, const char *, int *, char *, unsigned long int *);
-
+int _abs(int n);
+int copy_int(va_list ap, char *buffer, unsigned long int *bp);
+void _put_number(unsigned int i, char *buffer, unsigned long int *bp, int *count);
 #endif
