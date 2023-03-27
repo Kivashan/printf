@@ -42,8 +42,8 @@ int _printf(const char * format,...)
 		}
 		if (format[i] == '%' && format[i + 1] == '\0')
 		{
-			free(buffer);
-			return (-1);
+			print_buffer(buffer, &buff_pos);
+			return (0);
 		}
 		buffer[buff_pos] = format[i];
 		buff_pos++;
