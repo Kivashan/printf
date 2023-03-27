@@ -18,6 +18,7 @@ int copy_string(va_list list, char *buffer, unsigned long int *buff_pos)
 	if (!str)
 	{
 		char *fail = "(null)";
+
 		for (i = 0; fail[i]; i++)
 		{
 			check_buffer(buffer, buff_pos);
@@ -27,7 +28,8 @@ int copy_string(va_list list, char *buffer, unsigned long int *buff_pos)
 		}
 	}
 	else
-	{	for (i = 0; str[i]; i++)
+	{
+		for (i = 0; str[i]; i++)
 		{
 			check_buffer(buffer, buff_pos);
 			buffer[*buff_pos] = str[i];

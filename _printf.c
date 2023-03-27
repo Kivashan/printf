@@ -1,4 +1,12 @@
 #include "main.h"
+
+/**
+ * _printf - prints a formatted string
+ * @format: format string to print
+ *
+ * Return: number of characters printed
+ */
+
 int _printf(const char * format,...)
 {
 	char *buffer;
@@ -22,7 +30,6 @@ int _printf(const char * format,...)
 				count++;
 				continue;
 			}
-			/* Try introducing a while loop here to travers through format till null char is reached*/
 
 			j = 0;
 			while (print[j].spec != NULL)

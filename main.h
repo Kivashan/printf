@@ -6,14 +6,23 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-typedef struct printer {
+/**
+ * struct printer - structure containing two members
+ * @spec: pointer to a character string
+ * @case_func: function pointer
+ *
+ * Description: Structure containing two members
+ */
+
+typedef struct printer
+{
 	char *spec;
-	 int (*case_func)(va_list, char *, unsigned long int *);
-}get;
+	int (*case_func)(va_list, char *, unsigned long int *);
+} get;
 
 int _printf(const char *format, ...);
 int copy_char(va_list, char *, unsigned long int *);
-int copy_string(va_list, char *,unsigned long int *);
+int copy_string(va_list, char *, unsigned long int *);
 void print_buffer(char *, unsigned long int *);
 int print_percent(const char *, int *, char *, unsigned long int *);
 void check_buffer(char *, unsigned long int *);
