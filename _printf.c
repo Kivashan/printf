@@ -18,7 +18,10 @@ int _printf(const char * format,...)
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			if (print_percent(format, &i, buffer, &buff_pos))
+			{
+				count++;
 				continue;
+			}
 			/* Try introducing a while loop here to travers through format till null char is reached*/
 
 			j = 0;
@@ -44,7 +47,8 @@ int _printf(const char * format,...)
 		}
 		if (format[i] == '%' && format[i + 1] == '\0')
 		{
-			return (0);
+			print_buffer(buffer, &buff_pos);
+			return (-1);
 		}
 		check_buffer(buffer, &buff_pos);
 		buffer[buff_pos] = format[i];
