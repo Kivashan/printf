@@ -15,7 +15,7 @@ int  copy_binary(va_list ap, char *buffer, unsigned long int *bp)
 	unsigned int k, j = va_arg(ap, int);
 	int i;
 	int len2, len = 0;
-       	char *str;
+	char *str;
 
 	k = j;
 	if (j == 0)
@@ -30,7 +30,7 @@ int  copy_binary(va_list ap, char *buffer, unsigned long int *bp)
 		len++;
 
 	str = malloc(sizeof(char) * len + 1);
-	if(!str)
+	if (!str)
 		return (-1);
 	len2 = len;
 	/* Initialise str */
