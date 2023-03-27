@@ -11,18 +11,12 @@
  *
  * Return: the number of characters copied to buffer
  */
-
 int get_specifier(va_list ap, const char *fmt,
 	int *i, char *buffer, unsigned long int *bp)
 {
 	int j, flag = 0, count = 0;
-	get print[] = {
-		{"c", copy_char},
-		{"s", copy_string},
-		{"d", copy_int},
-		{"i", copy_int},
-		{"b", copy_binary},
-		{NULL, NULL}};
+	get print[] = {{"c", copy_char},{"s", copy_string},{"d", copy_int},
+		{"i", copy_int},{"b", copy_binary}, {NULL, NULL}};
 
 	if (print_percent(fmt, i, buffer, bp))
 	{
