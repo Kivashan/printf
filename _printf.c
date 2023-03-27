@@ -12,13 +12,15 @@ int _printf(const char * format,...)
 		return (-1);
 	buffer = malloc(1024);
 	if (!buffer)
-		return (0);
+		return (-1);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
 			if (print_percent(format, &i, buffer, &buff_pos))
 				continue;
+			/* Try introducing a while loop here to travers through format till null char is reached*/
+
 			j = 0;
 			while (print[j].spec != NULL)
 			{
