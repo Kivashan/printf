@@ -21,14 +21,10 @@ int get_specifier(va_list ap, const char *fmt,
 		{"d", copy_int},
 		{"i", copy_int},
 		{"b", copy_binary},
-<<<<<<< HEAD
 		{"u", copy_u},
 		{"x", copy_hex},
 		{"X", copy_HEX},
-=======
-		{"u", copy_int},
 		{"o", copy_octal},
->>>>>>> 409d476f0dc24027347fbaf55efc61dbcc34d1b6
 		{NULL, NULL}};
 
 	if (print_percent(fmt, i, buffer, bp))
