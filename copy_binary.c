@@ -12,7 +12,7 @@
 int  copy_binary(va_list ap, char *buffer, unsigned long int *bp)
 {
 	/*char *str;*/
-	unsigned int k, j = va_arg(ap, int);
+	unsigned long int k, j = va_arg(ap, int);
 	int i;
 	int len2, len = 0;
        	char *str;
