@@ -13,7 +13,7 @@ int _printf(const char * format,...)
 	buffer = malloc(1024);
 	if (!buffer)
 		return (-1);
-	for (i = 0; format && format[i] != '\0'; i++)
+	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%' && format[i + 1] != '\0')
 		{
@@ -33,9 +33,9 @@ int _printf(const char * format,...)
 			}
 			if (flag == 0)
 			{
+				check_buffer(buffer, &buff_pos);
 				buffer[buff_pos] = format[i];
 				buff_pos++;
-				check_buffer(buffer, &buff_pos);
 				count++;
 			}
 			continue;
@@ -45,9 +45,9 @@ int _printf(const char * format,...)
 			print_buffer(buffer, &buff_pos);
 			return (0);
 		}
+		check_buffer(buffer, &buff_pos);
 		buffer[buff_pos] = format[i];
 		buff_pos++;
-		check_buffer(buffer, &buff_pos);
 		count++;
 	}
 	print_buffer(buffer, &buff_pos);
