@@ -35,5 +35,6 @@ char *i_to_binary(int i)
 		i = i / 2;
 		str[j] = rem + 48;
 	}
+
 	return (str);
 }
