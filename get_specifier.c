@@ -11,7 +11,6 @@
  *
  * Return: the number of characters copied to buffer
  */
-
 int get_specifier(va_list ap, const char *fmt,
 	int *i, char *buffer, unsigned long int *bp)
 {
