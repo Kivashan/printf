@@ -17,26 +17,26 @@ int copy_octal(va_list ap, char *buffer, unsigned long int *bp)
 	len = 0;
 	n = va_arg(ap, int);
 
+	if (n < 8)
+	{
+	        buffer[*bp] = n + 48;
+		*bp = *bp + 1;
+		return (1);
+	}
 	num = n;
 	for (; n != 0; n = n / 8)
 		len++;
 
 	len2 = len;
-	str = malloc(sizeof(char) * len + 1);
+	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (-1);
-	if (num < 8)
+
+	for (i = len - 1; i >= 0; i--)
 	{
-		str[0] = num;
-	}
-	else
-	{
-		for (i = len - 1; i >= 0; i--)
-		{
-			rem = num % 8;
-			str[i] = rem + 48;
-			num = num / 8;
-		}
+		rem = num % 8;
+		str[i] = rem + 48;
+		num = num / 8;
 	}
 	for (i = 0; i < len2; i++)
 	{
