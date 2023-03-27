@@ -12,7 +12,8 @@
  * Return: the number of characters copied to buffer
  */
 
-int get_specifier(va_list ap, const char *fmt, int *i, char *buffer, unsigned long int *bp)
+int get_specifier(va_list ap, const char *fmt,
+	int *i, char *buffer, unsigned long int *bp)
 {
 	int j, flag = 0, count = 0;
 	get print[] = {{"c", copy_char}, {"s", copy_string}, {NULL, NULL}};
