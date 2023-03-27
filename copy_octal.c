@@ -21,6 +21,7 @@ int copy_octal(va_list ap, char *buffer, unsigned long int *bp)
 	{
 	        buffer[*bp] = n + 48;
 		*bp = *bp + 1;
+		check_buffer(buffer, bp);
 		return (1);
 	}
 	num = n;
