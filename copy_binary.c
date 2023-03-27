@@ -12,17 +12,19 @@
 int  copy_binary(va_list ap, char *buffer, unsigned long int *bp)
 {
 	/*char *str;*/
-	int j = va_arg(ap, int);
-	int len = 0;
-	int len2, i = j;
-	/* if i < 0 get absolute value of i */
-	if (j < 0)
-		return (-1);
+	unsigned int k, j = va_arg(ap, int);
+	int i;
+	int len2, len = 0;
+       	char *str;
 
+	k = j;
 	/* calculate length for str */
-	for ( ; i != 0; i /= 2)
+	for ( ; k != 0; k /= 2)
 		len++;
 
+	str = malloc(sizeof(char) * len + 1);
+	if(!str)
+		return (-1);
 	len2 = len;
 	/* Initialise str */
 	for (i = len - 1; i >= 0; i--)
@@ -30,8 +32,13 @@ int  copy_binary(va_list ap, char *buffer, unsigned long int *bp)
 		int rem = j % 2;
 
 		j = j / 2;
-		buffer[*bp + i] = rem + 48;
+		str[i] = rem + 48;
 	}
-		*bp = *bp + len2;
+	for (i = 0; i < len; i++)
+	{
+		buffer[*bp] = str[i];
+		*bp = *bp + 1;
+	}
+	free(str);
 	return (len2);
 }
