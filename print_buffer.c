@@ -12,5 +12,5 @@ void print_buffer(char *buffer, unsigned long int *buff_pos)
 {
 	write(1, buffer, *buff_pos);
 	free(buffer);
-	*buff_pos == 0;
+	*buff_pos = 0;
 }
