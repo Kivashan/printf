@@ -55,4 +55,3 @@ int copy_int(va_list ap, char *buffer, unsigned long int *bp)
 
 	return (count);
 }
-
