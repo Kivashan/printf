@@ -33,5 +33,7 @@ void _put_number(unsigned int i, char *buffer, unsigned long int *bp
 	, int *count);
 int copy_binary(va_list, char *, unsigned long int *);
 int copy_u(va_list, char *, unsigned long int *);
+int copy_hex(va_list, char *, unsigned long int *);
+int copy_HEX(va_list, char *, unsigned long int *);
 
 #endif
