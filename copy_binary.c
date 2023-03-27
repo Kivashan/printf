@@ -16,9 +16,9 @@ int  copy_binary(va_list ap, char *buffer, unsigned long int *bp)
 	int len = 0;
 	int len2, i = j;
 	/* if i < 0 get absolute value of i */
-/*	if (j < 0)
-		j = _abs(j);
-*/
+	if (j < 0)
+		return (-1);
+
 	/* calculate length for str */
 	for ( ; i != 0; i /= 2)
 		len++;
