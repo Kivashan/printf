@@ -14,24 +14,24 @@ int  copy_binary(va_list ap, char *buffer, unsigned long int *bp)
 	/*char *str;*/
 	int j = va_arg(ap, int);
 	int len = 0;
-	int len2;
+	int len2, i = j;
 	/* if i < 0 get absolute value of i */
 	if (j < 0)
 		j = _abs(j);
 
 	/* calculate length for str */
-	for ( ; j != 0; j /= 2)
+	for ( ; i != 0; i /= 2)
 		len++;
 
 	len2 = len;
 	/* Initialise str */
-	for ( ; len >= 0; len--)
+	for (i = len - 1; i >= 0; i--)
 	{
 		int rem = j % 2;
 
 		j = j / 2;
-		buffer[*bp + len - 1] = rem + 48;
+		buffer[*bp + i] = rem + 48;
 	}
-		*bp = *bp + len;
+		*bp = *bp + len2;
 	return (len2);
 }
