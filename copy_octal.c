@@ -1,43 +1,49 @@
 #include "main.h"
-
-int copy_octal(va_list ap, char * buffer, unsigned long int * bp)
+/**
+ * copy_octal - copy octal num to buffer
+ * @ap: va_list pointer
+ * @buffer: pointer to print staging mem location
+ * @bp: pointer to buffer position
+ *
+ * Description: covert number to octal and copy to buffer
+ * Return: int len2
+ */
+int copy_octal(va_list ap, char *buffer, unsigned long int *bp)
 {
-	int len, i, rem, num, len2, n = va_arg(ap, int);
 	char *str;
-	
+	int len, i, len2;
+	unsigned int rem, num, n;
+
+	len = 0;
+	n = va_arg(ap, int);
+
 	num = n;
+	for (; n != 0; n = n / 8)
+		len++;
 
-		for (; n != 0; n = n / 10)
-		       len++;
-		len2 = len;
-		str = malloc(sizeof(char) * len + 1);
-		if (!str)
-			return (-1);
-		if (n < 8)
+	len2 = len;
+	str = malloc(sizeof(char) * len + 1);
+	if (!str)
+		return (-1);
+	if (num < 8)
+	{
+		str[0] = num;
+	}
+	else
+	{
+		for (i = len - 1; i >= 0; i--)
 		{
-			str[0] = n;
+			rem = num % 8;
+			str[i] = rem + 48;
+			num = num / 8;
 		}
-		else
-		{
-			for (; num > 7; num = num / 10)
-			{
-				rem = num % 8;
-				str[len] = rem;
-			}
-
-		}
-		for (i = 0; i < len2; i++)
-		{
-			check_buffer(buffer, bp);
-			buffer[i] = str[i];
-			*bp += 1;
-		}
-		print_buffer(buffer, bp);
-		free(str);
+	}
+	for (i = 0; i < len2; i++)
+	{
+		buffer[*bp] = str[i];
+		*bp = *bp + 1;
+		check_buffer(buffer, bp);
+	}
+	free(str);
 	return (len2);
 }
-
-
-
-
-

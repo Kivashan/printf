@@ -35,5 +35,6 @@ int copy_binary(va_list, char *, unsigned long int *);
 int copy_u(va_list, char *, unsigned long int *);
 int copy_hex(va_list, char *, unsigned long int *);
 int copy_HEX(va_list, char *, unsigned long int *);
+int copy_octal(va_list ap, char * buffer, unsigned long int * bp);
 
 #endif
