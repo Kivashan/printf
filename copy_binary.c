@@ -30,7 +30,8 @@ int  copy_binary(va_list ap, char *buffer, unsigned long int *bp)
 		int rem = j % 2;
 
 		j = j / 2;
-		buffer[*bp + len] = rem + 48;
+		buffer[*bp + len - 1] = rem + 48;
 	}
+		*bp = *bp + len;
 	return (len2);
 }
