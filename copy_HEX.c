@@ -45,6 +45,7 @@ int  copy_HEX(va_list ap, char *buffer, unsigned long int *bp)
 	{
 		buffer[*bp] = str[i];
 		*bp = *bp + 1;
+		check_buffer(buffer, bp);
 	}
 	free(str);
 	return (len2);
