@@ -8,14 +8,10 @@
  * Description: copy string formated with hex
  * Return: int
  */
-
 int copy_S(va_list p, char *buffer, unsigned long int *bp)
 {
-	char *str;
-	char *tmp;
-	int i, k = 0, len = 0, j = 0;
-	char *hex = "0123456789ABCDEF";
-	int s, h, rem = 0;
+	char *str, *tmp, *hex = "0123456789ABCDEF";
+	int i, s, h, rem = 0, k = 0, len = 0, j = 0;
 
 	str = va_arg(p, char *);
 	for (i = 0; str[i]; i++)
@@ -25,30 +21,26 @@ int copy_S(va_list p, char *buffer, unsigned long int *bp)
 		return (-1);
 	for (i = 0; str[i]; i++)
 	{
-		for (k = 0; k <= 32; k++)
+		if (((int)str[i] < 32 || (int) str[i] >= 127) && (int)str[i] != 0)
 		{
-			if ((int)str[i] == k || (int)str[i] == 127)
+			tmp[j] = 92;
+			j = j + 1;
+			tmp[j] = 'x';
+			j = j + 1;
+			h = j + 1;
+			k = (int)str[i];
+			for (s = 0; s < 2; s++, j++, h--)
 			{
-				tmp[j] = 92;
-				j = j + 1;
-				tmp[j] = 'x';
-				j = j + 1;
-				i = i + 1;
-				h = j + 1;
-				for (s = 0; s < 2; s++)
-				{
-					rem = k % 16;
-					k = k / 16;
-					tmp[h] = hex[rem];
-					j++;
-					h--;
-				}
+				rem = k % 16;
+				k = k / 16;
+				tmp[h] = hex[rem];
 			}
-			
 		}
-		tmp[j] = str[i];
-		j++;
-
+		else
+		{
+			tmp[j] = str[i];
+			j++;
+		}
 	}
 	for (i = 0; i < j; i++)
 	{
@@ -58,4 +50,4 @@ int copy_S(va_list p, char *buffer, unsigned long int *bp)
 	}
 	free(tmp);
 	return (j);
-}			
+}
