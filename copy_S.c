@@ -68,6 +68,7 @@ int null_byte_check(char str, char *buffer, unsigned long int *bp)
 	if (!str)
 	{
 		buffer_update('0', buffer, bp);
+		buffer_update('0', buffer, bp);
 		return (1);
 	}
 	return(0);
