@@ -19,15 +19,7 @@ int rot_13(va_list ap, char *buffer, unsigned long int *bp)
 
 	if (!str)
 	{
-		int i;
-		char *fail = "(null)";
-
-		for (i = 0; fail[i]; i++)
-		{
-			buffer[*bp] = fail[i];
-			*bp = *bp + 1;
-			check_buffer(buffer, bp);
-		}
+		i = copy_null(buffer, bp);
 		return (i);
 	}
 	
