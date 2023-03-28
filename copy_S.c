@@ -27,7 +27,11 @@ int copy_S(va_list p, char *buffer, unsigned long int *bp)
 		return (-1);
 	for (i = 0; str[i]; i++)
 	{
-		j = null_byte_check(str[i], buffer, bp);
+		if (!str[i])
+		{
+			j = null_byte_check(str[i], buffer, bp);
+			return (j);
+		}
 		if (str[i] > 127)
 			i = i + 1;
 		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
