@@ -12,7 +12,7 @@
 
 int  copy_ax(va_list ap, char *buffer, unsigned long int *bp)
 {
-	unsigned long int k, j = (va_arg(ap, long));
+	unsigned long int k, j = (va_arg(ap, unsigned long int));
 	int i, len = 0;
 	char *str, *hex = "0123456789abcdef";
 
@@ -20,7 +20,7 @@ int  copy_ax(va_list ap, char *buffer, unsigned long int *bp)
 	if (j == 0)
 	{
 		char *nil = "(nil)";
-		*bp = *bp - 2;	
+		*bp = *bp - 2;
 		for (i = 0; nil[i]; i++)
 			buffer_update(nil[i], buffer, bp);
 		return (i);
