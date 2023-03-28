@@ -12,7 +12,7 @@
 
 int  copy_ax(va_list ap, char *buffer, unsigned long int *bp)
 {
-	unsigned long k, j = (va_arg(ap, long));
+	unsigned long int k, j = (va_arg(ap, long));
 	int i, len = 0;
 	char *str, *hex = "0123456789abcdef";
 
