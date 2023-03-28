@@ -15,6 +15,11 @@ int copy_S(va_list p, char *buffer, unsigned long int *bp)
 	int i, s, h, rem = 0, k = 0, len = 0, j = 0;
 
 	str = va_arg(p, void *);
+	if (!str)
+	{
+		j = copy_null(buffer, bp);
+		return (j);
+	}
 	for (i = 0; str[i]; i++)
 		len++;
 	tmp = malloc(sizeof(char) * len + 5);
@@ -24,7 +29,7 @@ int copy_S(va_list p, char *buffer, unsigned long int *bp)
 	{
 		if (str[i] > 127)
 			i = i + 1;
-		if ((str[i] > 0 && str[i] < 32) || str[i] > 127)
+		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
 		{
 			tmp[j] = 92;
 			j = j + 1;
