@@ -14,41 +14,17 @@
 int get_specifier(va_list ap, const char *fmt,
 	int *i, char *buffer, unsigned long int *bp)
 {
-	int j, flag = 0, count = 0;
-	get print[] = {
-		{"c", copy_char},
-		{"s", copy_string},
-		{"d", copy_int},
-		{"i", copy_int},
-		{"b", copy_binary},
-		{"u", copy_u},
-		{"x", copy_hex},
-		{"X", copy_HEX},
-		{"o", copy_octal},
-		{"R", rot_13},
-		{"p", copy_address},
-		{"r", copy_rev},
-		{"S", copy_S},
-		{NULL, NULL}};
+	int count = 0, flag = 0;
 
 	if (print_percent(fmt, i, buffer, bp))
 	{
 		count++;
 		flag = 1; /* look at later */
 	}
-
-	j = 0;
-	while (print[j].spec != NULL)
-	{
-		if (print[j].spec[0] == fmt[*i + 1])
-		{
-			count += (*print[j].case_func)(ap, buffer, bp);
-			*i = *i + 1;
-			flag = 1;
-			break;
-		}
-			j++;
-	}
+	if (flag == 0)
+		flag = get_custom(ap, buffer, bp, i, fmt, &count);
+	if (flag == 0)
+		flag = get_non_custom(ap, buffer, bp, i, fmt, &count);
 	if (flag == 0)
 	{
 		check_buffer(buffer, bp);

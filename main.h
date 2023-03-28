@@ -44,5 +44,9 @@ int copy_null(char *buffer, unsigned long int *bp);
 int copy_ax(va_list ap, char *buffer, unsigned long int *bp);
 void buffer_update(char c, char *buffer, unsigned long int *bp);
 int null_byte_check(char str, char *buffer, unsigned long int *bp);
+int get_custom(va_list ap, char *buffer, unsigned long int *bp, int *i,
+	const char *fmt, int *count);
+int get_non_custom(va_list ap, char *buffer, unsigned long int *bp, int *i,
+	const char *fmt, int *count);
 
 #endif
