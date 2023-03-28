@@ -50,6 +50,7 @@ int copy_S(va_list p, char *buffer, unsigned long int *bp)
 	free(tmp);
 	return (i);
 }
+
 /**
  * buffer_update - update buffer
  * @c: character
@@ -65,6 +66,7 @@ void buffer_update(char c, char *buffer, unsigned long int *bp)
 	*bp += 1;
 	check_buffer(buffer, bp);
 }
+
 /**
  * cpy - char to hex
  * @k: chacter
