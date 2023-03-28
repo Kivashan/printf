@@ -8,9 +8,11 @@
  * Return: The number of characters printed
  */
 
-void print_buffer(char *buffer, unsigned long int *buff_pos)
+int print_buffer(char *buffer, unsigned long int *buff_pos)
 {
-	write(1, buffer, *buff_pos);
+	int i;
+	i = write(1, buffer, *buff_pos);
 	free(buffer);
 	*buff_pos = 0;
+	return (i);
 }
