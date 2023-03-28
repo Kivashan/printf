@@ -12,7 +12,7 @@
 void check_buffer(char *buffer, unsigned long int *buff_pos)
 {
 
-	if (*buff_pos == 1024 || buffer[*buff_pos] == '\n')
+	if (*buff_pos == 1024)
 	{
 		print_buffer(buffer, buff_pos);
 		*buff_pos = 0;
