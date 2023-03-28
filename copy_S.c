@@ -65,7 +65,7 @@ int null_byte_check(char str, char *buffer, unsigned long int *bp)
 	{
 		buffer_update('0', buffer, bp);
 	}
-	return(2);
+	return(1);
 }
 
 void buffer_update(char c, char *buffer, unsigned long int *bp)
