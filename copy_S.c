@@ -24,7 +24,7 @@ int copy_S(va_list p, char *buffer, unsigned long int *bp)
 	{
 		if (str[i] >= 127)
 			i = i + 1;
-		if ((str[i] < 32 || str[i] >= 127) && str[i] != 0)
+		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
 		{
 			tmp[j] = 92;
 			j = j + 1;
