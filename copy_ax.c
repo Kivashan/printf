@@ -35,7 +35,7 @@ int  copy_ax(va_list ap, char *buffer, unsigned long int *bp)
 
 	str = malloc(sizeof(char) * len + 1);
 	if (!str)
-		return (NULL);
+		return (0);
 	/* Initialise str */
 	for (i = len - 1; i >= 0; i--)
 	{
