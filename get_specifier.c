@@ -26,6 +26,7 @@ int get_specifier(va_list ap, const char *fmt,
 		{"X", copy_HEX},
 		{"o", copy_octal},
 		{"R", rot_13},
+		{"p", copy_address},
 		{"r", copy_rev},
 		{"S", copy_S},
 		{NULL, NULL}};

@@ -37,6 +37,7 @@ int copy_hex(va_list, char *, unsigned long int *);
 int copy_HEX(va_list, char *, unsigned long int *);
 int copy_octal(va_list ap, char *buffer, unsigned long int *bp);
 int rot_13(va_list ap, char *buffer, unsigned long int *bp);
+int copy_address(va_list, char *, unsigned long int *);
 int copy_rev(va_list p, char *buffer, unsigned long int *bp);
 int copy_S(va_list p, char *buffer, unsigned long int *bp);
 #endif
