@@ -13,7 +13,7 @@ int copy_address(va_list ap, char *buffer, unsigned long int *bp)
 {
 	char *prefix = "0x";
 	int i = 0, j;
-	
+
 	for (i = 0; prefix[i]; i++)
 	{
 		buffer[*bp] = prefix[i];
