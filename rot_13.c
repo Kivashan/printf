@@ -22,7 +22,7 @@ int rot_13(va_list ap, char *buffer, unsigned long int *bp)
 		i = copy_null(buffer, bp);
 		return (i);
 	}
-	
+
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		for (j = 0; rot1[j] != '\0'; j++)
