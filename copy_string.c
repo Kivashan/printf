@@ -17,7 +17,7 @@ int copy_string(va_list list, char *buffer, unsigned long int *buff_pos)
 
 	if (!str)
 	{
-		count = copy_null(buffer, bp);
+		count = copy_null(buffer, buff_pos);
 	}	
 	else
 	{
