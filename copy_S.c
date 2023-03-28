@@ -23,7 +23,7 @@ int copy_S(va_list p, char *buffer, unsigned long int *bp)
 	}
 	for (i = 0; str[i]; i++)
 		len++;
-	tmp = malloc(sizeof(char) * len + 5);
+	tmp = malloc(sizeof(char) * len + 4);
 	if (!tmp)
 		return (-1);
 	for (i = 0; str[i]; i++)
