@@ -23,7 +23,7 @@ typedef struct printer
 int _printf(const char *format, ...);
 int copy_char(va_list, char *, unsigned long int *);
 int copy_string(va_list, char *, unsigned long int *);
-void print_buffer(char *, unsigned long int *);
+int print_buffer(char *, unsigned long int *);
 int print_percent(const char *, int *, char *, unsigned long int *);
 void check_buffer(char *, unsigned long int *);
 int get_specifier(va_list, const char *, int *, char *, unsigned long int *);
