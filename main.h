@@ -41,5 +41,5 @@ int copy_address(va_list, char *, unsigned long int *);
 int copy_rev(va_list, char *buffer, unsigned long int *bp);
 int copy_S(va_list, char *buffer, unsigned long int *bp);
 int copy_null(char *buffer, unsigned long int *bp);
-
+int copy_hexa(va_list ap, char *buffer, unsigned long int *bp);
 #endif
