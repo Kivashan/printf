@@ -42,4 +42,7 @@ int copy_rev(va_list, char *buffer, unsigned long int *bp);
 int copy_S(va_list, char *buffer, unsigned long int *bp);
 int copy_null(char *buffer, unsigned long int *bp);
 int copy_ax(va_list ap, char *buffer, unsigned long int *bp);
+void buffer_update(char c, char *buffer, unsigned long int *bp);
+int null_byte_check(char str, char *buffer, unsigned long int *bp);
+
 #endif

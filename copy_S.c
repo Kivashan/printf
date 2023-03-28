@@ -11,7 +11,7 @@
 int copy_S(va_list p, char *buffer, unsigned long int *bp)
 {
 	unsigned char *str, *tmp;
-       char *hex = "0123456789ABCDEF";
+       	char *hex = "0123456789ABCDEF";
 	int i, s, h, rem = 0, k = 0, len = 0, j = 0;
 
 	str = va_arg(p, void *);
@@ -27,6 +27,7 @@ int copy_S(va_list p, char *buffer, unsigned long int *bp)
 		return (-1);
 	for (i = 0; str[i]; i++)
 	{
+		j = null_byte_check(str[i], buffer, bp);
 		if (str[i] > 127)
 			i = i + 1;
 		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
@@ -52,10 +53,24 @@ int copy_S(va_list p, char *buffer, unsigned long int *bp)
 	}
 	for (i = 0; i < j; i++)
 	{
-		buffer[*bp] = tmp[i];
-		*bp = *bp + 1;
-		check_buffer(buffer, bp);
+		buffer_update(tmp[i], buffer, bp);
 	}
 	free(tmp);
 	return (j);
+}
+
+int null_byte_check(char str, char *buffer, unsigned long int *bp)
+{
+	if (!str)
+	{
+		buffer_update('0', buffer, bp);
+	}
+	return(2);
+}
+
+void buffer_update(char c, char *buffer, unsigned long int *bp)
+{
+	buffer[*bp] = c;
+	*bp += 1;
+	check_buffer(buffer, bp);
 }
