@@ -19,7 +19,7 @@ int copy_octal(va_list ap, char *buffer, unsigned long int *bp)
 
 	if (n < 8)
 	{
-	        buffer[*bp] = n + 48;
+		buffer[*bp] = n + 48;
 		*bp = *bp + 1;
 		check_buffer(buffer, bp);
 		return (1);
