@@ -21,7 +21,7 @@ int copy_address(va_list ap, char *buffer, unsigned long int *bp)
 		check_buffer(buffer, bp);
 	}
 	
-	j = copy_hexa(ap, buffer, bp);
+	j = copy_ax(ap, buffer, bp);
 
 	return (j);
 }

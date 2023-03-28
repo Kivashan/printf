@@ -9,18 +9,20 @@
  * Return: Pointer to a string
  */
 
-int  copy_hexa(va_list ap, char *buffer, unsigned long int *bp)
+int  copy_ax(va_list ap, char *buffer, unsigned long int *bp)
 {
-	unsigned int *k, *j = va_arg(ap, void *);
-	int i;
+	int *k;
+	void *j = va_arg(ap,void *);
+	int i, f;
 	int len2, len = 0;
 	char *str;
 	char hex[16] = "0123456789abcdef";
-
-	k = j;
-	if (*j < 16)
+	
+	k = (int *)j;
+	f = *k;
+	if (f < 16)
 	{
-		buffer[*bp] = hex[*j];
+		buffer[*bp] = hex[f];
 		*bp = *bp + 1;
 		check_buffer(buffer, bp);
 		return (1);
@@ -36,9 +38,9 @@ int  copy_hexa(va_list ap, char *buffer, unsigned long int *bp)
 	/* Initialise str */
 	for (i = len - 1; i >= 0; i--)
 	{
-		int rem = *j % 16;
+		int rem = f % 16;
 
-		*j = *j / 16;
+		f = f / 16;
 		str[i] = hex[rem];
 	}
 	for (i = 0; i < len; i++)
