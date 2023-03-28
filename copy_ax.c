@@ -1,11 +1,12 @@
 #include "main.h"
 
 /**
- * copy_hex - converts i to binary
+ * copy_ax - converts i to binary
  * @ap: va_list, calling va_arg for integer argument
  * @buffer: buffer to store binary
  * @bp: position of next empty element in buffer
  *
+ * Description: convert number to binary
  * Return: Pointer to a string
  */
 
@@ -17,7 +18,7 @@ int  copy_ax(va_list ap, char *buffer, unsigned long int *bp)
 	int len2, len = 0;
 	char *str;
 	char hex[16] = "0123456789abcdef";
-	
+
 	k = j;
 	if (j < 16)
 	{
