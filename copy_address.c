@@ -20,8 +20,8 @@ int copy_address(va_list ap, char *buffer, unsigned long int *bp)
 		*bp = *bp + 1;
 		check_buffer(buffer, bp);
 	}
-	
-	j = copy_ax(ap, buffer, bp);
+	j = 2;
+	j += copy_ax(ap, buffer, bp);
 
 	return (j);
 }
