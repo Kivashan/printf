@@ -9,14 +9,10 @@
  */
 int copy_null(char *buffer, unsigned long int *bp)
 {
-	char *str = "(null)";
+	char *str = "(nill)";
 	int i;
 
 	for (i = 0; str[i]; i++)
-	{
-		buffer[*bp] = str[i];
-		*bp = *bp + 1;
-		check_buffer(buffer, bp);
-	}
+		buffer_update(str[i], buffer, bp);
 	return (i);
 }

@@ -27,11 +27,7 @@ int copy_rev(va_list p, char *buffer, unsigned long int *bp)
 		j++;
 	}
 	for (i = 0; tmp[i]; i++)
-	{
-		buffer[*bp] = tmp[i];
-		check_buffer(buffer, bp);
-		*bp = *bp + 1;
-	}
+		buffer_update(tmp[i], buffer, bp);
 	free(tmp);
 	return (len);
 }

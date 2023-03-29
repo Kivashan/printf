@@ -21,9 +21,8 @@ void _put_number(unsigned int i, char *buffer
 		i = i / 10;
 		_put_number(i, buffer, bp, count);
 	}
-	buffer[*bp] = (j + 48);
-	*bp = *bp + 1;
-	*count = *count + 1;
+	buffer_update((j + 48), buffer, bp);
+	*count += 1;
 }
 
 /**
@@ -43,10 +42,8 @@ int copy_int(va_list ap, char *buffer, unsigned long int *bp)
 	/* prints minus sign if i < 0 */
 	if (i < 0)
 	{
-		buffer[*bp] = '-';
-		*bp = *bp + 1;
+		buffer_update('-', buffer, bp);
 		count++;
-
 		i = _abs(i);
 	}
 

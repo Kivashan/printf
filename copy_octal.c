@@ -11,7 +11,7 @@
 int copy_octal(va_list ap, char *buffer, unsigned long int *bp)
 {
 	char *str;
-	int len, i, len2;
+	int len, i;
 	unsigned int rem, num, n;
 
 	len = 0;
@@ -19,16 +19,13 @@ int copy_octal(va_list ap, char *buffer, unsigned long int *bp)
 
 	if (n < 8)
 	{
-		buffer[*bp] = n + 48;
-		*bp = *bp + 1;
-		check_buffer(buffer, bp);
+		buffer_update((n + 48), buffer, bp);
 		return (1);
 	}
 	num = n;
 	for (; n != 0; n = n / 8)
 		len++;
 
-	len2 = len;
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (-1);
@@ -39,12 +36,8 @@ int copy_octal(va_list ap, char *buffer, unsigned long int *bp)
 		str[i] = rem + 48;
 		num = num / 8;
 	}
-	for (i = 0; i < len2; i++)
-	{
-		buffer[*bp] = str[i];
-		*bp = *bp + 1;
-		check_buffer(buffer, bp);
-	}
+	for (i = 0; i < len; i++)
+		buffer_update(str[i], buffer, bp);
 	free(str);
-	return (len2);
+	return (len);
 }
