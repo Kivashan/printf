@@ -30,7 +30,7 @@ int get_custom(va_list ap, char *buffer, unsigned long int *bp, int *i,
 		if (c_print[j].spec[0] == fmt[*i + 1])
 		{
 			*count += (*c_print[j].case_func)(ap, buffer, bp);
-			*i = *i + 1;
+			*i += 1;
 			flag = 1;
 			break;
 		}

@@ -35,7 +35,7 @@ int get_non_custom(va_list ap, char *buffer, unsigned long int *bp, int *i,
 		if (print[j].spec[0] == fmt[*i + 1])
 		{
 			*count += (*print[j].case_func)(ap, buffer, bp);
-			*i = *i + 1;
+			*i += 1;
 			flag = 1;
 			break;
 		}
