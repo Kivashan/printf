@@ -23,7 +23,7 @@ int  copy_ax(va_list ap, char *buffer, unsigned long int *bp)
 		*bp = *bp - 2;
 		for (i = 0; nil[i]; i++)
 			buffer_update(nil[i], buffer, bp);
-		return (i);
+		return (-1);
 	}
 	if (j < 16)
 	{

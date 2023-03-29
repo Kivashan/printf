@@ -23,7 +23,7 @@ int copy_string(va_list list, char *buffer, unsigned long int *buff_pos)
 	{
 		for (i = 0; str[i]; i++)
 		{
-			buffer(str[i], buffer, bp);
+			buffer_update(str[i], buffer, buff_pos);
 			count++;
 		}
 	}
