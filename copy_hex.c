@@ -13,7 +13,7 @@ int  copy_hex(va_list ap, char *buffer, unsigned long int *bp)
 {
 	unsigned int k, j = va_arg(ap, int);
 	int i, len = 0;
-	char *str, *hex= "0123456789abcdef";
+	char *str, *hex = "0123456789abcdef";
 
 	k = j;
 	if (j < 16)

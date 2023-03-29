@@ -9,7 +9,7 @@
  */
 int copy_null(char *buffer, unsigned long int *bp)
 {
-	char *str = "(nill)";
+	char *str = "(null)";
 	int i;
 
 	for (i = 0; str[i]; i++)
