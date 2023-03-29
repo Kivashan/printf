@@ -32,9 +32,7 @@ int _printf(const char *format, ...)
 			print_buffer(buffer, &buff_pos);
 			return (-1);
 		}
-		check_buffer(buffer, &buff_pos);
-		buffer[buff_pos] = format[i];
-		buff_pos++;
+		buffer_update(format[i], buffer, &buff_pos);
 		count++;
 	}
 	print_buffer(buffer, &buff_pos);

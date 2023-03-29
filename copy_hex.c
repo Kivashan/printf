@@ -12,28 +12,21 @@
 int  copy_hex(va_list ap, char *buffer, unsigned long int *bp)
 {
 	unsigned int k, j = va_arg(ap, int);
-	int i;
-	int len2, len = 0;
-	char *str;
-	char hex[16] = "0123456789abcdef";
+	int i, len = 0;
+	char *str, *hex= "0123456789abcdef";
 
 	k = j;
 	if (j < 16)
 	{
-		buffer[*bp] = hex[j];
-		*bp = *bp + 1;
-		check_buffer(buffer, bp);
+		buffer_update(hex[j], buffer, bp);
 		return (1);
 	}
-	/* calculate length for str */
 	for ( ; k != 0; k /= 16)
 		len++;
 
 	str = malloc(sizeof(char) * len + 1);
 	if (!str)
 		return (-1);
-	len2 = len;
-	/* Initialise str */
 	for (i = len - 1; i >= 0; i--)
 	{
 		int rem = j % 16;
@@ -42,11 +35,7 @@ int  copy_hex(va_list ap, char *buffer, unsigned long int *bp)
 		str[i] = hex[rem];
 	}
 	for (i = 0; i < len; i++)
-	{
-		buffer[*bp] = str[i];
-		*bp = *bp + 1;
-		check_buffer(buffer, bp);
-	}
+		buffer_update(str[i], buffer, bp);
 	free(str);
-	return (len2);
+	return (len);
 }

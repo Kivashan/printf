@@ -12,15 +12,12 @@
 int copy_address(va_list ap, char *buffer, unsigned long int *bp)
 {
 	char *prefix = "0x";
-	int i = 0, j;
+	int i = 0, j = 2;
 
 	for (i = 0; prefix[i]; i++)
 	{
-		buffer[*bp] = prefix[i];
-		*bp = *bp + 1;
-		check_buffer(buffer, bp);
+		buffer_update(prefix[i], buffer, bp);
 	}
-	j = 2;
 	j += copy_ax(ap, buffer, bp);
 
 	return (j);

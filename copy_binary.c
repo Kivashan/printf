@@ -20,9 +20,7 @@ int  copy_binary(va_list ap, char *buffer, unsigned long int *bp)
 	k = j;
 	if (j == 0)
 	{
-		buffer[*bp] = '0';
-		*bp = *bp + 1;
-		check_buffer(buffer, bp);
+		buffer_update('0', buffer, bp);
 		return (1);
 	}
 	/* calculate length for str */
@@ -42,10 +40,7 @@ int  copy_binary(va_list ap, char *buffer, unsigned long int *bp)
 		str[i] = rem + 48;
 	}
 	for (i = 0; i < len; i++)
-	{
-		buffer[*bp] = str[i];
-		*bp = *bp + 1;
-	}
+		buffer_update(str[i], buffer, bp);
 	free(str);
 	return (len2);
 }
