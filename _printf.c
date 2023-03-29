@@ -37,6 +37,5 @@ int _printf(const char *format, ...)
 	}
 	print_buffer(buffer, &buff_pos);
 	va_end(ap);
-	free(buffer);
 	return (count);
 }
